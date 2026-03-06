@@ -57,6 +57,7 @@
           name="password"
           v-model="password"
           @blur="$emit('validate', 'password')"
+          @input="$emit('validate', 'password')"
           class="form-control form-control-lg fs-6"
           :class="{ 'is-invalid': errors.password }"
           placeholder="Min 8 chars, incl. 1 special ($, %, ^, &, *)"

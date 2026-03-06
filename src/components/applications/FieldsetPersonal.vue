@@ -58,6 +58,7 @@
           name="dob"
           v-model="dob"
           @blur="$emit('validate', 'dob')"
+          @change="$emit('validate', 'dob')"
           class="form-control form-control-lg fs-6"
           :class="{ 'is-invalid': errors.dob }"
           autocomplete="bday"
