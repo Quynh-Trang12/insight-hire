@@ -72,8 +72,11 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
  */
 .overview-link.active {
   background-color: #f1f5f9 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #e9ecef !important;
   border-left: 4px solid var(--bs-primary) !important;
-  border-color: var(--bs-primary) !important;
+  border-radius: 0 !important;
   color: var(--bs-primary) !important;
 }
 
