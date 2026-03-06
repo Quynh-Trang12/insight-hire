@@ -296,24 +296,4 @@ const job = computed(() => {
     font-size: 0.75rem;
   }
 }
-
-/* ==================================================================
-   BUTTON OVERRIDES
-   ================================================================== */
-
-/**
- * Ensure "Apply" button meets AAA standards
- * Using our custom primary color defined in accessibility.css
- */
-.btn-primary {
-  background-color: #084298 !important;
-  border-color: #084298 !important;
-  color: #ffffff !important;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #052c65 !important;
-  border-color: #052c65 !important;
-}
 </style>

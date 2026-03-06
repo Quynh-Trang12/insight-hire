@@ -58,13 +58,21 @@
   border-radius: 6px;
   font-weight: 500;
   letter-spacing: 0.01em;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: #1e293b; /* Slate 800 */
-  border-color: #1e293b;
-  color: #ffffff;
+.btn-primary:hover {
+  background-color: rgb(29, 40, 65) !important;
+  border-color: rgb(29, 40, 65) !important;
+  transform: scale(1.02); /* Slightly enlarge the button */
+}
+
+.btn-primary:active {
+  background-color: #1c283b !important; /* Slate 800 */
+  border-color: #1d283a !important;
+  transform: scale(0.95); /* Shrink slightly when clicked */
 }
 
 /* ==================================================================
@@ -200,7 +208,7 @@
  */
 *:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: 2px;
+  outline-offset: 6px;
 }
 
 button:focus-visible,
@@ -209,7 +217,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: 2px;
+  outline-offset: 6px;
 }
 
 /* ==================================================================
@@ -295,7 +303,7 @@ textarea:focus-visible {
 
   /* Ensure focus indicators are extra visible */
   *:focus-visible {
-    outline-width: 4px;
+    outline-width: 2px;
   }
 }
 

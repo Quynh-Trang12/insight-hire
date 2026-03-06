@@ -59,9 +59,9 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
  * Default state must have sufficient contrast for all text
  */
 .overview-link {
-  background-color: #f8f9fa !important;
-  color: #000000 !important;
-  border-bottom: 2px solid #e9ecef !important;
+  background-color: #ffffff !important;
+  color: var(--bs-secondary) !important;
+  border-bottom: 1px solid #e9ecef !important;
 }
 
 /**
@@ -71,9 +71,10 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
  * - Contrast: 15.6:1 (exceeds 7:1 requirement)
  */
 .overview-link.active {
-  background-color: var(--bs-primary) !important;
+  background-color: #f1f5f9 !important;
+  border-left: 4px solid var(--bs-primary) !important;
   border-color: var(--bs-primary) !important;
-  color: #ffffff !important;
+  color: var(--bs-primary) !important;
 }
 
 /**
@@ -82,7 +83,7 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
  */
 .overview-link h3 {
   color: inherit !important;
-  font-size: 1rem; /* Match original h6 visual size */
+  font-size: 1rem;
 }
 
 /* ==================================================================
@@ -90,7 +91,7 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
    ================================================================== */
 
 .overview-link:hover:not(.active) {
-  background-color: #e9ecef !important;
-  transform: translateX(2px);
+  background-color: #f1f5f9 !important;
+  border-left: 4px solid #94a3b8 !important;
 }
 </style>

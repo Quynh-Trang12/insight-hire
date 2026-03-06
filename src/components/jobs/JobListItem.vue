@@ -3,7 +3,7 @@
     <router-link
       :to="`/jobs/${job.job_id}`"
       class="job-list-item list-group-item list-group-item-action p-3 transition-all"
-      active-class="active shadow-sm border-primary text-white"
+      active-class="active"
       :aria-label="`View details for ${job.job_title} at ${job.company}`"
       :aria-current="$route.params.id === job.job_id ? 'page' : false"
     >
@@ -17,20 +17,14 @@
 
       <div class="d-flex justify-content-between align-items-center mt-2 gap-2">
         <span
-          class="company-name text-truncate"
-          :class="$route.params.id === job.job_id ? 'text-white' : 'text-dark'"
+          class="company-name text-truncate text-dark"
           :title="job.company"
           aria-label="Company name"
         >
           {{ job.company }}
         </span>
         <span
-          class="badge text-nowrap"
-          :class="
-            $route.params.id === job.job_id
-              ? 'bg-light text-primary'
-              : 'bg-primary'
-          "
+          class="badge text-nowrap bg-primary"
           :aria-label="`Employment type: ${job.employment_type}`"
         >
           {{ job.employment_type }}
@@ -83,13 +77,8 @@ defineProps({
    ================================================================== */
 
 .job-list-item:hover:not(.active) {
-  background-color: #f8f9fa;
-  transform: translateX(4px);
-}
-
-.job-list-item:focus {
-  outline: 3px solid #0d47a1;
-  outline-offset: 2px;
+  background-color: #f1f5f9;
+  border-left: 4px solid #94a3b8;
 }
 
 /* ==================================================================
@@ -107,8 +96,27 @@ defineProps({
   color: var(--bs-secondary);
 }
 
-/* When active, h3 text must be white for contrast on dark bg */
+/* When active, left-border accent with light background (matching Overview) */
+.list-group-item.job-list-item.active {
+  background-color: #f1f5f9 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #e9ecef !important;
+  border-left: 4px solid var(--bs-primary) !important;
+  border-radius: 0 !important;
+  color: var(--bs-secondary) !important;
+}
+
 .job-list-item.active h3 {
+  color: var(--bs-primary) !important;
+}
+
+.job-list-item.active .company-name {
+  color: var(--bs-secondary) !important;
+}
+
+.job-list-item.active .badge {
+  background-color: var(--bs-primary) !important;
   color: #ffffff !important;
 }
 
