@@ -2,11 +2,11 @@
   <fieldset class="mb-4 p-4 border rounded bg-light">
     <legend class="visually-hidden">Address and Contact</legend>
 
-    <h4
+    <h3
       class="fw-bold text-primary border-bottom border-primary border-opacity-25 pb-2 mb-3 fs-5"
     >
       Address & Contact
-    </h4>
+    </h3>
 
     <div class="row g-3">
       <div class="col-12">

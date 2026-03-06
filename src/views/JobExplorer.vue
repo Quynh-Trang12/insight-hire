@@ -13,10 +13,10 @@
         </div>
       </aside>
 
-      <!-- Main content area - THIS is the single <main> landmark for the page -->
-      <main class="col-12 col-md-8 col-lg-9" id="main-content">
+      <!-- Job detail content area -->
+      <section class="col-12 col-md-8 col-lg-9" aria-label="Job details">
         <router-view />
-      </main>
+      </section>
     </div>
   </div>
 </template>

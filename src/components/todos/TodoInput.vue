@@ -79,7 +79,7 @@ const submitTask = () => {
    ================================================================== */
 
 .form-label strong {
-  color: #084298; /* AAA-compliant primary color */
+  color: var(--bs-primary); /* AAA-compliant primary color */
   display: block;
 }
 
@@ -89,8 +89,8 @@ const submitTask = () => {
    ================================================================== */
 
 .form-control:focus {
-  border-color: #084298;
-  box-shadow: 0 0 0 0.25rem rgba(8, 66, 152, 0.25);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(15, 23, 42, 0.15);
 }
 
 
@@ -99,20 +99,20 @@ const submitTask = () => {
    ================================================================== */
 
 .btn-primary {
-  background-color: #084298 !important;
-  border-color: #084298 !important;
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
   color: #ffffff !important;
 }
 
 .btn-primary:hover:not(:disabled),
 .btn-primary:focus:not(:disabled) {
-  background-color: #052c65 !important;
-  border-color: #052c65 !important;
+  background-color: #1E293B !important;
+  border-color: #1E293B !important;
 }
 
 .btn-primary:disabled {
-  background-color: #6c757d !important;
-  border-color: #6c757d !important;
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
   opacity: 0.65;
   cursor: not-allowed;
 }

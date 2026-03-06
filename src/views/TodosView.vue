@@ -22,19 +22,19 @@
 /**
  * @file TodosView.vue
  * @description Page layout for task management feature
- * 
+ *
  * Architecture:
  * - Presentational view component
  * - Centers todo list on page
  * - Provides page title and instructions
- * 
+ *
  * Accessibility:
  * - No nested <main> landmark (parent provides it)
  * - Semantic <header> for page title
  * - Clear subtitle explaining feature purpose
  */
 
-import TodoList from '../components/todos/TodoList.vue'
+import TodoList from "../components/todos/TodoList.vue";
 </script>
 
 <style scoped>
@@ -53,14 +53,13 @@ import TodoList from '../components/todos/TodoList.vue'
 
 /* 
  * Subtitle color override for AAA compliance
- * Using darker gray (#3d4144) for 10.5:1 contrast ratio
+ * Using Slate 700 (var(--bs-secondary)) for >7:1 contrast ratio
  */
 .subtitle {
-  color: #3d4144 !important;
+  color: var(--bs-secondary) !important;
   font-size: 1rem;
   line-height: 1.6;
 }
-
 
 /* ==================================================================
    TODO CONTAINER

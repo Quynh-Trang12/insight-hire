@@ -3,12 +3,30 @@
     <!-- Skip to main content link for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="site-header bg-dark text-white p-3 mb-4 shadow-sm">
+    <header class="site-header bg-white border-bottom p-3 mb-4 shadow-sm">
       <div
         class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
       >
-        <h1 class="h3 mb-3 mb-md-0 fw-bold d-flex align-items-center">
-          <span class="text-primary me-2">Insight</span>Hire
+        <h1
+          class="h3 mb-3 mb-md-0 fw-bold d-flex align-items-center tracking-tight"
+        >
+          <svg
+            class="text-primary me-2"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2L2 7l10 5 10-5-10-5Z" />
+            <path d="M2 17l10 5 10-5" />
+            <path d="M2 12l10 5 10-5" />
+          </svg>
+          <span class="text-primary fw-bolder">Insight</span
+          ><span class="text-secondary fw-semibold">Hire</span>
         </h1>
 
         <nav aria-label="Main navigation">
@@ -16,8 +34,8 @@
             <li>
               <router-link
                 to="/jobs"
-                class="text-white text-decoration-none"
-                active-class="fw-bold border-bottom border-primary border-3 pb-1"
+                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                active-class="text-primary fw-bold active-nav"
                 aria-current="page"
               >
                 Job Explorer
@@ -27,8 +45,8 @@
             <li>
               <router-link
                 to="/apply"
-                class="text-white text-decoration-none"
-                active-class="fw-bold border-bottom border-primary border-3 pb-1"
+                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                active-class="text-primary fw-bold active-nav"
               >
                 Job Application
               </router-link>
@@ -37,8 +55,8 @@
             <li>
               <router-link
                 to="/todos"
-                class="text-white text-decoration-none"
-                active-class="fw-bold border-bottom border-primary border-3 pb-1"
+                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                active-class="text-primary fw-bold active-nav"
               >
                 To-Do List
               </router-link>
@@ -48,14 +66,16 @@
       </div>
     </header>
 
-    <!-- Main content area - landmark is now properly in child components -->
-    <div id="main-content">
+    <!-- Main content area - single <main> landmark for the page -->
+    <main id="main-content">
       <router-view />
-    </div>
+    </main>
 
-    <footer class="site-footer text-center text-muted mt-5 py-4 border-top">
+    <footer class="site-footer text-center mt-5 py-4 border-top">
       <div class="container">
-        <p class="footer-text mb-0">&copy; 2025 Insight Hire. All rights reserved.</p>
+        <p class="footer-text mb-0 fw-medium">
+          &copy; 2026 Insight Hire. All rights reserved.
+        </p>
       </div>
     </footer>
   </div>
@@ -65,12 +85,12 @@
 /**
  * @file App.vue
  * @description Root component providing global layout structure
- * 
+ *
  * Architecture:
  * - Single header with primary navigation
  * - Router view for dynamic content (contains <main> landmark in child views)
  * - Single footer with copyright information
- * 
+ *
  * Accessibility:
  * - Proper landmark structure (<header>, <nav>, <footer>)
  * - Skip link for keyboard users
@@ -88,14 +108,13 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #212529 !important;
 }
 
 /* Navigation list styling */
 .nav-list li {
   display: inline-block;
+  position: relative;
 }
-
 
 /* ==================================================================
    FOOTER STYLES  
@@ -108,13 +127,41 @@
 
 /* 
  * Footer text color override to meet AAA standards
- * Original text-muted is too light, this darker color has 10.5:1 contrast
+ * Original text-muted is too light, this darker color has AAA contrast
  */
 .footer-text {
-  color: #3d4144 !important;
+  color: var(--bs-secondary) !important;
   font-size: 0.875rem;
 }
 
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.transition-colors {
+  transition:
+    color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.nav-link-item:hover {
+  color: var(--bs-primary) !important;
+}
+
+.active-nav {
+  position: relative;
+}
+
+.active-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--bs-primary);
+  border-radius: 2px;
+}
 
 /* ==================================================================
    RESPONSIVE NAVIGATION
@@ -126,7 +173,7 @@
     align-items: center;
     gap: 1rem !important;
   }
-  
+
   .nav-list li {
     width: 100%;
     text-align: center;

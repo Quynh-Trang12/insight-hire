@@ -5,8 +5,8 @@
         <header class="page-header mb-4 text-center">
           <h2 class="fw-bold text-primary">Job Application</h2>
           <p class="subtitle text-muted">
-            Please fill out the form below to apply for a position. All required fields must be
-            completed correctly before submission.
+            Please fill out the form below to apply for a position. All required
+            fields must be completed correctly before submission.
           </p>
         </header>
 
@@ -23,19 +23,19 @@
 /**
  * @file ApplicationView.vue
  * @description Page layout for job application form
- * 
+ *
  * Architecture:
  * - Presentational view component
  * - Centers form on page
  * - Provides page title and instructions
- * 
+ *
  * Accessibility:
  * - No nested <main> landmark (parent provides it)
  * - Semantic <header> for page title
  * - Clear instructions for form completion
  */
 
-import ApplicationForm from '../components/applications/ApplicationForm.vue'
+import ApplicationForm from "../components/applications/ApplicationForm.vue";
 </script>
 
 <style scoped>
@@ -54,14 +54,13 @@ import ApplicationForm from '../components/applications/ApplicationForm.vue'
 
 /* 
  * Subtitle color override for AAA compliance
- * Using darker gray (#3d4144) for 10.5:1 contrast ratio
+ * Using Slate 700 (var(--bs-secondary)) for >7:1 contrast ratio
  */
 .subtitle {
-  color: #3d4144 !important;
+  color: var(--bs-secondary) !important;
   font-size: 1rem;
   line-height: 1.6;
 }
-
 
 /* ==================================================================
    FORM CONTAINER

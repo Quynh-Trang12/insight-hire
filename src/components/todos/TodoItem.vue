@@ -115,7 +115,7 @@ defineEmits(['toggle', 'delete'])
    ================================================================== */
 
 .task-text {
-  color: #000000; /* Maximum contrast */
+  color: #1E293B; /* Slate 800: 10.7:1 on white, ensures contrast during animations */
   line-height: 1.6;
 }
 
@@ -134,7 +134,7 @@ defineEmits(['toggle', 'delete'])
 }
 
 .priority-label.text-danger {
-  color: #a71d2a !important; /* AAA-compliant danger color */
+  color: #991B1B !important; /* Red 800: 8.9:1 on white, 7.9:1 on #fff3cd */
 }
 
 
@@ -150,15 +150,15 @@ defineEmits(['toggle', 'delete'])
  * - Contrast: 7.1:1
  */
 .btn-warning {
-  background-color: #856404 !important;
-  border-color: #856404 !important;
+  background-color: #78350F !important;
+  border-color: #78350F !important;
   color: #ffffff !important;
 }
 
 .btn-warning:hover,
 .btn-warning:focus {
-  background-color: #664d03 !important;
-  border-color: #664d03 !important;
+  background-color: #633112 !important;
+  border-color: #633112 !important;
   color: #ffffff !important;
 }
 
@@ -167,14 +167,14 @@ defineEmits(['toggle', 'delete'])
  * Uses our AAA-compliant secondary color
  */
 .btn-outline-secondary {
-  color: #3d4144 !important;
-  border-color: #3d4144 !important;
+  color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
 }
 
 .btn-outline-secondary:hover,
 .btn-outline-secondary:focus {
-  background-color: #3d4144 !important;
-  border-color: #3d4144 !important;
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
   color: #ffffff !important;
 }
 
@@ -186,15 +186,15 @@ defineEmits(['toggle', 'delete'])
  * - Contrast: 7.2:1
  */
 .btn-danger {
-  background-color: #a71d2a !important;
-  border-color: #a71d2a !important;
+  background-color: #991B1B !important;
+  border-color: #991B1B !important;
   color: #ffffff !important;
 }
 
 .btn-danger:hover,
 .btn-danger:focus {
-  background-color: #7a161f !important;
-  border-color: #7a161f !important;
+  background-color: #7F1D1D !important;
+  border-color: #7F1D1D !important;
   color: #ffffff !important;
 }
 

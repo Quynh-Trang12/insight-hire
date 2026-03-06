@@ -40,12 +40,19 @@
     />
 
     <div class="mb-4 p-3 border rounded bg-white">
-      <button type="button" class="btn btn-outline-secondary btn-sm" @click="toggleTerms">
-        {{ showTerms ? 'Hide' : 'View' }} Terms and Conditions
+      <button
+        type="button"
+        class="btn btn-outline-secondary btn-sm"
+        @click="toggleTerms"
+      >
+        {{ showTerms ? "Hide" : "View" }} Terms and Conditions
       </button>
-      <div v-show="showTerms" class="terms-text p-3 bg-light border rounded small text-dark mt-2">
-        By submitting this application, you agree that all information provided is accurate and true
-        to the best of your knowledge.
+      <div
+        v-show="showTerms"
+        class="terms-text p-3 bg-light border rounded small text-dark mt-2"
+      >
+        By submitting this application, you agree that all information provided
+        is accurate and true to the best of your knowledge.
       </div>
     </div>
 
@@ -53,7 +60,10 @@
       <button type="submit" class="btn btn-primary px-5 py-2 fw-bold shadow-sm">
         Submit Application
       </button>
-      <span v-if="hasSubmissionAttempted && hasErrors" class="text-danger fw-bold">
+      <span
+        v-if="hasSubmissionAttempted && hasErrors"
+        class="text-danger fw-bold"
+      >
         Please fix the highlighted errors above.
       </span>
       <span v-if="isSuccess" class="text-success fw-bold">
@@ -67,12 +77,12 @@
 /**
  * @file ApplicationForm.vue
  * @description Smart parent component managing form state and validation
- * 
+ *
  * Architecture:
  * - Centralized state management (reactive form object)
  * - Validation coordinated through handleValidate method
  * - Child fieldsets are presentational (emit events, display errors)
- * 
+ *
  * Validation Strategy:
  * - Field-level validation on blur/input
  * - Form-level validation on submit
@@ -80,39 +90,38 @@
  * - Real-time error feedback
  */
 
-import { reactive, ref, computed } from 'vue'
-import FieldsetPersonal from './FieldsetPersonal.vue'
-import FieldsetAccount from './FieldsetAccount.vue'
-import FieldsetAddress from './FieldsetAddress.vue'
-import FieldsetPreferences from './FieldsetPreferences.vue'
-import { REGEX } from '../../constants/regex.js'
+import { reactive, ref, computed } from "vue";
+import FieldsetPersonal from "./FieldsetPersonal.vue";
+import FieldsetAccount from "./FieldsetAccount.vue";
+import FieldsetAddress from "./FieldsetAddress.vue";
+import FieldsetPreferences from "./FieldsetPreferences.vue";
+import { REGEX } from "../../constants/regex.js";
 
 /* ==================================================================
    STATE MANAGEMENT
    ================================================================== */
 
 const form = reactive({
-  firstName: '',
-  lastName: '',
-  dob: '',
-  username: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  street: '',
-  suburb: '',
-  postcode: '',
-  mobile: '',
-  category: '',
-})
+  firstName: "",
+  lastName: "",
+  dob: "",
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+  street: "",
+  suburb: "",
+  postcode: "",
+  mobile: "",
+  category: "",
+});
 
-const errors = reactive({})
-const showTerms = ref(false)
-const hasSubmissionAttempted = ref(false)
-const isSuccess = ref(false)
+const errors = reactive({});
+const showTerms = ref(false);
+const hasSubmissionAttempted = ref(false);
+const isSuccess = ref(false);
 
-const hasErrors = computed(() => Object.keys(errors).length > 0)
-
+const hasErrors = computed(() => Object.keys(errors).length > 0);
 
 /* ==================================================================
    VALIDATION FUNCTIONS
@@ -126,54 +135,54 @@ const hasErrors = computed(() => Object.keys(errors).length > 0)
  */
 const validateField = (field, value, formState) => {
   // Clear existing error for this field
-  delete errors[field]
+  delete errors[field];
 
   // Required field check
-  if (!value || (typeof value === 'string' && !value.trim())) {
-    errors[field] = 'This field is required.'
-    return
+  if (!value || (typeof value === "string" && !value.trim())) {
+    errors[field] = "This field is required.";
+    return;
   }
 
   // Field-specific validation
   switch (field) {
-    case 'firstName':
-    case 'lastName':
+    case "firstName":
+    case "lastName":
       if (!REGEX.ALPHA_ONLY.test(value)) {
-        errors[field] = 'Must contain letters only.'
+        errors[field] = "Must contain letters only.";
       }
-      break
+      break;
 
-    case 'email':
+    case "email":
       if (!REGEX.EMAIL.test(value)) {
-        errors[field] = 'Please enter a valid email address.'
+        errors[field] = "Please enter a valid email address.";
       }
-      break
+      break;
 
-    case 'password':
+    case "password":
       if (!REGEX.PASSWORD_SPECIAL_CHAR.test(value)) {
-        errors[field] = 'Must contain at least one special character ($%^&*).'
+        errors[field] = "Must contain at least one special character ($%^&*).";
       }
-      break
+      break;
 
-    case 'confirmPassword':
+    case "confirmPassword":
       if (value !== formState.password) {
-        errors[field] = 'Passwords do not match.'
+        errors[field] = "Passwords do not match.";
       }
-      break
+      break;
 
-    case 'postcode':
+    case "postcode":
       if (!REGEX.NUMERIC_EXACT_4.test(value)) {
-        errors[field] = 'Postcode must be exactly 4 digits.'
+        errors[field] = "Postcode must be exactly 4 digits.";
       }
-      break
+      break;
 
-    case 'mobile':
+    case "mobile":
       if (!REGEX.NUMERIC_EXACT_8.test(value)) {
-        errors[field] = 'Mobile suffix must be exactly 8 digits.'
+        errors[field] = "Mobile suffix must be exactly 8 digits.";
       }
-      break
+      break;
   }
-}
+};
 
 /**
  * Validates all form fields
@@ -181,10 +190,9 @@ const validateField = (field, value, formState) => {
  */
 const validateAll = (formState) => {
   Object.keys(formState).forEach((field) => {
-    validateField(field, formState[field], formState)
-  })
-}
-
+    validateField(field, formState[field], formState);
+  });
+};
 
 /* ==================================================================
    EVENT HANDLERS
@@ -194,39 +202,39 @@ const validateAll = (formState) => {
  * Toggles terms and conditions visibility
  */
 const toggleTerms = () => {
-  showTerms.value = !showTerms.value
-}
+  showTerms.value = !showTerms.value;
+};
 
 /**
  * Handles validation events from child components
  * @param {string} field - Field name to validate
  */
 const handleValidate = (field) => {
-  validateField(field, form[field], form)
-}
+  validateField(field, form[field], form);
+};
 
 /**
  * Validates and submits the form
  * @param {Event} event - Submit event
  */
 const validateAndSubmit = (event) => {
-  hasSubmissionAttempted.value = true
-  isSuccess.value = false
+  hasSubmissionAttempted.value = true;
+  isSuccess.value = false;
 
   // Run full validation
-  validateAll(form)
+  validateAll(form);
 
   if (hasErrors.value) {
-    event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   } else {
     // Prevent default for local testing (remove for production)
-    event.preventDefault()
-    isSuccess.value = true
-    console.log('Form validated successfully!', form)
-    alert('Success! Form is ready for submission.')
+    event.preventDefault();
+    isSuccess.value = true;
+    console.log("Form validated successfully!", form);
+    alert("Success! Form is ready for submission.");
   }
-}
+};
 </script>
 
 <style scoped>
@@ -239,20 +247,19 @@ const validateAndSubmit = (event) => {
 }
 
 .terms-text {
-  color: #000000 !important; /* AAA compliance */
+  color: var(--bs-secondary) !important; /* AAA compliance */
   line-height: 1.6;
 }
-
 
 /* ==================================================================
    SUCCESS/ERROR MESSAGES
    ================================================================== */
 
 .text-success {
-  color: #198754 !important; /* Bootstrap success with AAA contrast */
+  color: #15803d !important; /* Green 700 with AAA contrast */
 }
 
 .text-danger {
-  color: #a71d2a !important; /* AAA-compliant danger color */
+  color: var(--bs-danger) !important; /* AAA-compliant danger color */
 }
 </style>

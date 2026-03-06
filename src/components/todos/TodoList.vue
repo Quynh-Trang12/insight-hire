@@ -228,7 +228,7 @@ const togglePriority = (id) => {
 }
 
 .empty-state p {
-  color: #3d4144 !important; /* AAA-compliant muted text */
+  color: var(--bs-secondary) !important; /* AAA-compliant muted text */
   font-size: 1rem;
 }
 
@@ -249,7 +249,7 @@ const togglePriority = (id) => {
   min-width: 320px;
   max-width: 400px;
   background-color: #ffffff;
-  border: 2px solid #084298; /* AAA-compliant primary color */
+  border: 2px solid var(--bs-primary); /* AAA-compliant primary color */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 16px;
@@ -264,7 +264,7 @@ const togglePriority = (id) => {
 
 .toast-message {
   flex: 1;
-  color: #000000; /* Maximum contrast */
+  color: #1E293B; /* Slate 800 for maximum contrast */
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -317,7 +317,7 @@ const togglePriority = (id) => {
    ================================================================== */
 
 .text-dark {
-  color: #000000 !important;
+  color: #1E293B !important;
 }
 
 
