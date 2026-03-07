@@ -76,7 +76,7 @@
               <p
                 class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
               >
-                Positions
+                Avail. Positions
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
                 {{ job.positions_available }}
@@ -148,15 +148,15 @@
         <h4 class="fw-bold text-dark mb-3">Preferred Qualifications</h4>
         <ul class="list-inline mb-4" role="list">
           <li
-            v-for="qual in job.preferred_qualifications"
-            :key="qual"
+            v-for="qualification in job.preferred_qualifications"
+            :key="qualification"
             class="list-inline-item mb-2"
             role="listitem"
           >
             <span
               class="badge qualification-badge rounded-pill px-3 py-2 fw-medium"
             >
-              {{ qual }}
+              {{ qualification }}
             </span>
           </li>
         </ul>
@@ -277,6 +277,8 @@ const job = computed(() => {
 
 .info-card {
   transition: transform 0.2s ease-in-out;
+  /* Establish an isolated container to scale typography dynamically based on this card's width */
+  container-type: inline-size;
 }
 
 .info-card:hover {
@@ -284,16 +286,18 @@ const job = computed(() => {
 }
 
 /* ==================================================================
-   RESPONSIVE DESIGN
+   FLUID RESPONSIVE DESIGN
    ================================================================== */
 
-@media (max-width: 991.98px) {
-  .responsive-text {
-    font-size: 0.9rem;
-  }
+/* Fluid text based on info-card's actual current width, completely avoiding breakpoints */
+.responsive-text {
+  white-space: nowrap;
+  /* Fluidly scales text size between limits: clamp(min, preferred based on container %, max) */
+  font-size: clamp(0.75rem, 6cqi, 1rem);
+}
 
-  .responsive-heading {
-    font-size: 0.75rem;
-  }
+.info-card .small {
+  /* Dynamic heading sizing */
+  font-size: clamp(0.7rem, 5cqi, 0.875em);
 }
 </style>
