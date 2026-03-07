@@ -89,15 +89,16 @@
           <input
             type="text"
             id="mobile_visible"
-            v-model="mobile"
-            @input="$emit('validate', 'mobile')"
-            @blur="$emit('validate', 'mobile')"
+            v-model="displayMobile"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @input="handleInput"
             class="form-control fs-6 border-start-0"
             :class="{ 'is-invalid': errors.mobile }"
             placeholder="12 345 678"
             aria-describedby="mobile-prefix"
             aria-required="true"
-            maxlength="8"
+            maxlength="10"
             autocomplete="tel-national"
           />
           <div class="invalid-feedback">{{ errors.mobile }}</div>
@@ -130,13 +131,58 @@
  * - Mobile prefix clearly associated with input
  */
 
+import { ref, watch } from "vue";
+
 const street = defineModel("street");
 const suburb = defineModel("suburb");
 const postcode = defineModel("postcode");
 const mobile = defineModel("mobile");
 
 defineProps({ errors: { type: Object, required: true } });
-defineEmits(["validate"]);
+const emit = defineEmits(["validate"]);
+
+const displayMobile = ref("");
+
+const formatVal = (val) => {
+  const digits = (val || "").toString().replace(/\D/g, "").substring(0, 8);
+  if (digits.length > 5) {
+    return `${digits.substring(0, 2)} ${digits.substring(2, 5)} ${digits.substring(5, 8)}`;
+  } else if (digits.length > 2) {
+    return `${digits.substring(0, 2)} ${digits.substring(2, 5)}`;
+  }
+  return digits;
+};
+
+// Sync incoming value to displayMobile if input is not focused
+watch(
+  mobile,
+  (newVal) => {
+    if (document.activeElement?.id !== "mobile_visible") {
+      displayMobile.value = formatVal(newVal);
+    }
+  },
+  { immediate: true },
+);
+
+const handleFocus = () => {
+  // Show raw digits for easy editing without cursor jump
+  displayMobile.value = mobile.value || "";
+};
+
+const handleInput = (e) => {
+  // Update core model with stripped digits
+  const digits = e.target.value.replace(/\D/g, "").substring(0, 8);
+  if (mobile.value !== digits) {
+    mobile.value = digits;
+  }
+  emit("validate", "mobile");
+};
+
+const handleBlur = () => {
+  // Apply formatting on blur
+  displayMobile.value = formatVal(mobile.value);
+  emit("validate", "mobile");
+};
 </script>
 
 <style scoped>
