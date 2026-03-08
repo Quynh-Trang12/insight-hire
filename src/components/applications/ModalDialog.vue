@@ -33,7 +33,7 @@
         <div :id="bodyId" class="modal-body-section p-4">
           <!-- Success message -->
           <template v-if="variant === 'success'">
-            <p class="mb-0 fw-bold modal-success-text">
+            <p class="mb-0 fw-bold text-success">
               <span aria-hidden="true">✓</span>
               {{ message }}
             </p>
@@ -41,7 +41,7 @@
 
           <!-- Error message with field list -->
           <template v-else-if="variant === 'error'">
-            <p class="mb-2 fw-bold modal-error-text">{{ message }}</p>
+            <p class="mb-2 fw-bold text-danger">{{ message }}</p>
             <ul
               v-if="errors.length"
               class="mb-0 ps-3"
@@ -51,7 +51,7 @@
               <li
                 v-for="(error, index) in errors"
                 :key="index"
-                class="small mb-1 modal-error-text"
+                class="small mb-1 text-danger"
               >
                 {{ error }}
               </li>
@@ -201,17 +201,5 @@ onBeforeUnmount(() => {
   max-height: 80vh;
   overflow-y: auto;
   outline: none;
-}
-
-/* ==================================================================
-   TEXT COLORS — AAA-compliant, matching existing palette
-   ================================================================== */
-
-.modal-success-text {
-  color: #15803d !important; /* Green 700 — matches existing .text-success */
-}
-
-.modal-error-text {
-  color: var(--bs-danger) !important; /* Matches existing .text-danger */
 }
 </style>

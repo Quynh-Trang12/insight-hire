@@ -1,16 +1,15 @@
 <template>
-  <nav aria-label="Available job positions" class="job-list-nav">
+  <nav aria-label="Available job positions">
     <ul class="list-group list-group-flush" role="list">
       <li role="listitem">
         <router-link
           to="/jobs"
-          class="list-group-item list-group-item-action p-3 transition-all overview-link"
+          class="list-group-item list-group-item-action p-3"
           exact-active-class="active shadow-sm"
           aria-label="View job overview page"
         >
           <div class="d-flex align-items-center">
-            <!-- Changed from h6 to h3 to fix heading hierarchy -->
-            <h3 class="mb-0 fw-bold fs-6">Overview</h3>
+            <h3 class="mb-0 fw-bold">Overview</h3>
           </div>
         </router-link>
       </li>
@@ -43,58 +42,21 @@ import { jobsData as jobs } from "../../assets/data/jobs.js";
 
 <style scoped>
 /* ==================================================================
-   TRANSITION EFFECTS
-   ================================================================== */
-
-.transition-all {
-  transition: all 0.2s ease-in-out;
-}
-
-/* ==================================================================
-   WCAG AAA COMPLIANCE OVERRIDES FOR JOB LIST
+   WCAG AAA COMPLIANCE OVERRIDES FOR OVERVIEW LINK
    ================================================================== */
 
 /**
  * Overview Link Styling
  * Default state must have sufficient contrast for all text
  */
-.overview-link {
+.list-group-item {
   background-color: #ffffff !important;
   color: var(--bs-secondary) !important;
   border-bottom: 1px solid #e9ecef !important;
 }
 
-/**
- * Active state uses our AAA-compliant primary color
- * - Background: var(--bs-primary)
- * - Text: #ffffff (white)
- * - Contrast: 15.6:1 (exceeds 7:1 requirement)
- */
-.overview-link.active {
-  background-color: #f1f5f9 !important;
-  border-top: none !important;
-  border-right: none !important;
-  border-bottom: 1px solid #e9ecef !important;
-  border-left: 4px solid var(--bs-primary) !important;
-  border-radius: 0 !important;
-  color: var(--bs-primary) !important;
-}
-
-/**
- * Ensure heading inherits the link color
- * This prevents Bootstrap defaults from overriding our AAA colors
- */
-.overview-link h3 {
-  color: inherit !important;
-  font-size: 1rem;
-}
-
-/* ==================================================================
-   HOVER STATES
-   ================================================================== */
-
-.overview-link:hover:not(.active) {
-  background-color: #f1f5f9 !important;
-  border-left: 4px solid #94a3b8 !important;
+/* Overview heading font size */
+.list-group-item h3 {
+  font-size: 1.15rem;
 }
 </style>

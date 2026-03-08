@@ -386,16 +386,4 @@ const validateAndSubmit = (event) => {
   color: var(--bs-secondary) !important; /* AAA compliance */
   line-height: 1.6;
 }
-
-/* ==================================================================
-   SUCCESS/ERROR MESSAGES
-   ================================================================== */
-
-.text-success {
-  color: #15803d !important; /* Green 700 with AAA contrast */
-}
-
-.text-danger {
-  color: var(--bs-danger) !important; /* AAA-compliant danger color */
-}
 </style>

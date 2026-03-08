@@ -187,11 +187,6 @@
  * List group items when selected (job list sidebar)
  * Uses our AAA-compliant primary color
  */
-.list-group-item.active {
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-  color: #ffffff !important;
-}
 
 /* Router link active state */
 .router-link-active {
@@ -245,47 +240,6 @@ textarea:focus-visible {
   top: 0;
   outline: var(--focus-ring-width) solid #1d4ed8;
   outline-offset: -3px;
-}
-
-/* ==================================================================
-   TOAST NOTIFICATIONS (Undo Delete Feature)
-   ================================================================== */
-
-.toast-container {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1050;
-}
-
-.toast {
-  min-width: 320px;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-left: 4px solid var(--bs-primary);
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-}
-
-.toast-body {
-  color: #0f172a;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  font-weight: 500;
-}
-
-.toast-message {
-  flex: 1;
-  color: #0f172a;
-}
-
-.toast-action {
-  flex-shrink: 0;
 }
 
 /* ==================================================================

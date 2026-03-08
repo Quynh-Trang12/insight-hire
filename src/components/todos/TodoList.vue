@@ -18,8 +18,8 @@
         </TransitionGroup>
       </ul>
 
-      <div 
-        v-else 
+      <div
+        v-else
         class="empty-state text-center p-5 bg-light rounded border border-dashed"
         role="status"
         aria-live="polite"
@@ -30,8 +30,8 @@
 
     <!-- Undo Delete Toast Notification -->
     <Transition name="toast">
-      <div 
-        v-if="showUndoToast" 
+      <div
+        v-if="showUndoToast"
         class="toast-notification"
         role="alert"
         aria-live="assertive"
@@ -39,7 +39,7 @@
       >
         <div class="toast-content">
           <span class="toast-message">Task deleted</span>
-          <button 
+          <button
             @click="undoDelete"
             class="btn btn-sm btn-primary toast-action"
             aria-label="Undo task deletion"
@@ -56,20 +56,20 @@
 /**
  * @file TodoList.vue
  * @description Task management component with undo delete functionality
- * 
+ *
  * Features:
  * - Add new tasks (prepended to list)
  * - Delete tasks with 5-second undo window
  * - Toggle priority (High/Low)
  * - Smooth animations for add/remove
  * - Toast notifications for user feedback
- * 
+ *
  * State Management:
  * - tasks: Active task list
  * - deletedTasks: Stack of recently deleted tasks (for undo)
  * - showUndoToast: Controls toast visibility
  * - undoTimeoutId: Manages auto-dismissal timer
- * 
+ *
  * Accessibility:
  * - ARIA live regions for dynamic updates
  * - Semantic HTML throughout
@@ -77,21 +77,20 @@
  * - Clear visual feedback
  */
 
-import { ref } from 'vue'
-import TodoInput from './TodoInput.vue'
-import TodoItem from './TodoItem.vue'
+import { ref } from "vue";
+import TodoInput from "./TodoInput.vue";
+import TodoItem from "./TodoItem.vue";
 
 /* ==================================================================
    STATE MANAGEMENT
    ================================================================== */
 
-const tasks = ref([])
-const deletedTasks = ref([])
-const showUndoToast = ref(false)
-const undoTimeoutId = ref(null)
+const tasks = ref([]);
+const deletedTasks = ref([]);
+const showUndoToast = ref(false);
+const undoTimeoutId = ref(null);
 
-const UNDO_TIMEOUT_MS = 5000 // 5 seconds to undo deletion
-
+const UNDO_TIMEOUT_MS = 5000; // 5 seconds to undo deletion
 
 /* ==================================================================
    TASK MANAGEMENT FUNCTIONS
@@ -102,21 +101,21 @@ const UNDO_TIMEOUT_MS = 5000 // 5 seconds to undo deletion
  * @param {string} taskText - The task description
  */
 const addTask = (taskText) => {
-  if (!taskText || !taskText.trim()) return
+  if (!taskText || !taskText.trim()) return;
 
   const newTask = {
     id: Date.now(), // Simple unique ID generator
     text: taskText.trim(),
     isHighPriority: false, // New tasks default to low priority
-  }
+  };
 
-  tasks.value.unshift(newTask) // Prepend to start of array
-}
+  tasks.value.unshift(newTask); // Prepend to start of array
+};
 
 /**
  * Deletes a task with undo capability
  * @param {number} id - Task ID to delete
- * 
+ *
  * Algorithm:
  * 1. Find and store the task in deletedTasks stack
  * 2. Remove task from active list
@@ -124,70 +123,70 @@ const addTask = (taskText) => {
  * 4. Auto-clear undo option after 5 seconds
  */
 const deleteTask = (id) => {
-  const task = tasks.value.find((t) => t.id === id)
-  if (!task) return
+  const task = tasks.value.find((t) => t.id === id);
+  if (!task) return;
 
   // Store deleted task with timestamp
   deletedTasks.value.push({
     task: { ...task }, // Clone to avoid reference issues
     timestamp: Date.now(),
-  })
+  });
 
   // Remove from active list
-  tasks.value = tasks.value.filter((t) => t.id !== id)
+  tasks.value = tasks.value.filter((t) => t.id !== id);
 
   // Show undo notification
-  showUndoToast.value = true
+  showUndoToast.value = true;
 
   // Clear any existing timeout
   if (undoTimeoutId.value) {
-    clearTimeout(undoTimeoutId.value)
+    clearTimeout(undoTimeoutId.value);
   }
 
   // Auto-hide toast after timeout
   undoTimeoutId.value = setTimeout(() => {
-    showUndoToast.value = false
-    
+    showUndoToast.value = false;
+
     // Clean up old deleted tasks (keep only those within timeout window)
     deletedTasks.value = deletedTasks.value.filter(
-      (d) => Date.now() - d.timestamp < UNDO_TIMEOUT_MS
-    )
-  }, UNDO_TIMEOUT_MS)
-}
+      (d) => Date.now() - d.timestamp < UNDO_TIMEOUT_MS,
+    );
+  }, UNDO_TIMEOUT_MS);
+};
 
 /**
  * Restores the most recently deleted task
- * 
+ *
  * Algorithm:
  * 1. Pop last deleted task from stack
  * 2. Restore to beginning of active list
  * 3. Hide toast notification
  */
 const undoDelete = () => {
-  if (deletedTasks.value.length === 0) return
+  if (deletedTasks.value.length === 0) return;
 
-  const { task } = deletedTasks.value.pop()
-  tasks.value.unshift(task) // Restore to beginning
+  const { task } = deletedTasks.value.pop();
+  tasks.value.unshift(task); // Restore to beginning
 
-  showUndoToast.value = false
+  showUndoToast.value = false;
 
   // Clear timeout since user manually undid
   if (undoTimeoutId.value) {
-    clearTimeout(undoTimeoutId.value)
-    undoTimeoutId.value = null
+    clearTimeout(undoTimeoutId.value);
+    undoTimeoutId.value = null;
   }
-}
+};
 
 /**
  * Toggles a task between high and low priority
  * @param {number} id - Task ID to toggle
  */
 const togglePriority = (id) => {
-  const task = tasks.value.find((t) => t.id === id)
+  const task = tasks.value.find((t) => t.id === id);
   if (task) {
-    task.isHighPriority = !task.isHighPriority
+    task.isHighPriority = !task.isHighPriority;
   }
-}
+};
 </script>
 
 <style scoped>
@@ -218,7 +217,6 @@ const togglePriority = (id) => {
   transition: transform 0.4s ease;
 }
 
-
 /* ==================================================================
    EMPTY STATE
    ================================================================== */
@@ -232,9 +230,8 @@ const togglePriority = (id) => {
   font-size: 1rem;
 }
 
-
 /* ==================================================================
-   TOAST NOTIFICATION STYLES
+   TOAST NOTIFICATION STYLES (Undo Delete Feature)
    ================================================================== */
 
 /**
@@ -264,7 +261,7 @@ const togglePriority = (id) => {
 
 .toast-message {
   flex: 1;
-  color: #1E293B; /* Slate 800 for maximum contrast */
+  color: #1e293b; /* Slate 800 for maximum contrast */
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -273,9 +270,8 @@ const togglePriority = (id) => {
   flex-shrink: 0;
 }
 
-
 /* ==================================================================
-   TOAST ANIMATIONS
+   TOAST ANIMATIONS (Undo Delete Feature)
    ================================================================== */
 
 /**
@@ -311,15 +307,13 @@ const togglePriority = (id) => {
   }
 }
 
-
 /* ==================================================================
    HEADING COLOR OVERRIDE
    ================================================================== */
 
 .text-dark {
-  color: #1E293B !important;
+  color: #1e293b !important;
 }
-
 
 /* ==================================================================
    RESPONSIVE ADJUSTMENTS

@@ -1,5 +1,5 @@
 <template>
-  <article v-if="job" class="job-detail card shadow-sm border-0">
+  <article v-if="job" class="card shadow-sm border-0">
     <div class="card-body p-4 p-md-5">
       <!-- Main job title - h3 to follow h2 "Job Explorer" -->
       <header class="mb-4 pb-4 border-bottom">
@@ -8,7 +8,7 @@
         </h3>
 
         <!-- Company name - h4 as subsection -->
-        <h4 class="text-dark mb-4 fs-5">{{ job.company }}</h4>
+        <h4 class="company-name mb-4 fs-5">{{ job.company }}</h4>
 
         <div class="d-flex flex-wrap gap-2 mb-3">
           <span class="badge bg-primary px-3 py-2" aria-label="Job category">
@@ -49,9 +49,7 @@
         <div class="row g-3 mb-4">
           <div class="col-12 col-md-6 col-lg-4">
             <div class="info-card p-3 bg-light rounded border h-100">
-              <p
-                class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-dark text-uppercase fw-bold">
                 Salary Range
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
@@ -61,9 +59,7 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="info-card p-3 bg-light rounded border h-100">
-              <p
-                class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-dark text-uppercase fw-bold">
                 Job Level
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
@@ -73,9 +69,7 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="info-card p-3 bg-light rounded border h-100">
-              <p
-                class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-dark text-uppercase fw-bold">
                 Avail. Positions
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
@@ -85,9 +79,7 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="info-card p-3 bg-light rounded border h-100">
-              <p
-                class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-dark text-uppercase fw-bold">
                 Supervisor
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
@@ -97,9 +89,7 @@
           </div>
           <div class="col-12 col-md-6 col-lg-4">
             <div class="info-card p-3 bg-light rounded border h-100">
-              <p
-                class="mb-1 small text-dark text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-dark text-uppercase fw-bold">
                 Start Date
               </p>
               <p class="mb-0 fw-medium text-dark responsive-text">
@@ -111,9 +101,7 @@
             <div
               class="info-card p-3 bg-light rounded border border-primary h-100"
             >
-              <p
-                class="mb-1 small text-primary text-uppercase fw-bold tracking-wide"
-              >
+              <p class="mb-1 small text-primary text-uppercase fw-bold">
                 Deadline
               </p>
               <p class="mb-0 fw-bold text-dark responsive-text">
@@ -185,8 +173,8 @@
     <div>
       <h3 class="alert-heading fw-bold mb-2 fs-5">Position Not Found</h3>
       <p class="mb-0">
-        We couldn't find a job matching the ID in the URL. Please select a valid
-        position from the list on the left.
+        We couldn&apos;t find a job matching the ID in the URL. Please select a
+        valid position from the list on the left.
       </p>
     </div>
   </div>
@@ -231,20 +219,12 @@ const job = computed(() => {
    TYPOGRAPHY
    ================================================================== */
 
-.line-height-lg {
+.card-text {
   line-height: 1.8;
 }
 
-.tracking-wide {
+.small {
   letter-spacing: 0.05em;
-}
-
-/**
- * Ensure all text colors meet AAA standards
- * Using var(--bs-secondary) Slate 700 for >7:1 contrast on white
- */
-.text-dark {
-  color: var(--bs-secondary) !important;
 }
 
 /* ==================================================================
@@ -276,13 +256,8 @@ const job = computed(() => {
    ================================================================== */
 
 .info-card {
-  transition: transform 0.2s ease-in-out;
   /* Establish an isolated container to scale typography dynamically based on this card's width */
   container-type: inline-size;
-}
-
-.info-card:hover {
-  transform: translateY(-2px);
 }
 
 /* ==================================================================

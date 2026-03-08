@@ -1,10 +1,10 @@
 <template>
-  <article class="job-overview card shadow-sm">
+  <article class="card shadow-sm">
     <div class="card-body p-4 p-md-5">
       <!-- Changed from h2 to h3 to maintain heading hierarchy -->
       <h3 class="card-title text-primary mb-4 fw-bold">Job Overview</h3>
 
-      <div class="card-text lead text-dark">
+      <div class="card-text lead fs-6">
         <p class="mb-4">
           Insight Hire connects passionate individuals with exciting
           opportunities in the fields of Artificial Intelligence, Data Science,
@@ -15,10 +15,10 @@
         </p>
 
         <p class="mb-4">
-          Whether you're a student looking to break into the tech industry, a
-          researcher aiming to apply machine learning in real-world contexts, or
-          a developer seeking your next challenge, Insight Hire helps you find
-          roles that match your skills and aspirations. Each job posting
+          Whether you&apos;re a student looking to break into the tech industry,
+          a researcher aiming to apply machine learning in real-world contexts,
+          or a developer seeking your next challenge, Insight Hire helps you
+          find roles that match your skills and aspirations. Each job posting
           includes detailed descriptions, required skills, company background,
           and application deadlines, so you can make informed decisions about
           your career path.
@@ -62,7 +62,7 @@
    CARD STYLING
    ================================================================== */
 
-.job-overview {
+.card {
   border: none;
   border-top: 5px solid var(--bs-primary); /* AAA-compliant primary color */
   border-radius: 0.5rem;
@@ -72,21 +72,10 @@
    TYPOGRAPHY
    ================================================================== */
 
-.card-text {
-  line-height: 1.7;
-}
-
-/**
- * Text color override for AAA compliance
- * Using Slate 700 (var(--bs-secondary)) for >7:1 contrast on white
- */
-.text-dark {
-  color: var(--bs-secondary) !important;
-}
-
+.card-text,
 .card-text p {
-  font-size: 1rem;
-  color: var(--bs-secondary);
+  line-height: 1.7;
+  color: var(--bs-secondary) !important;
 }
 
 /* ==================================================================

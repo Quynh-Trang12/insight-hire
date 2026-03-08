@@ -3,13 +3,11 @@
     <!-- Skip to main content link for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="site-header bg-white border-bottom p-3 mb-4 shadow-sm">
+    <header class="bg-white border-bottom p-3 mb-4 shadow-sm">
       <div
         class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
       >
-        <h1
-          class="h3 mb-3 mb-md-0 fw-bold d-flex align-items-center tracking-tight"
-        >
+        <h1 class="h3 mb-3 mb-md-0 fw-bold d-flex align-items-center">
           <svg
             class="text-primary me-2"
             width="28"
@@ -34,7 +32,7 @@
             <li>
               <router-link
                 to="/jobs"
-                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                class="text-secondary fw-medium text-decoration-none"
                 active-class="text-primary fw-bold active-nav"
                 aria-current="page"
               >
@@ -45,7 +43,7 @@
             <li>
               <router-link
                 to="/apply"
-                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                class="text-secondary fw-medium text-decoration-none"
                 active-class="text-primary fw-bold active-nav"
               >
                 Job Application
@@ -55,7 +53,7 @@
             <li>
               <router-link
                 to="/todos"
-                class="text-secondary fw-medium text-decoration-none transition-colors nav-link-item"
+                class="text-secondary fw-medium text-decoration-none"
                 active-class="text-primary fw-bold active-nav"
               >
                 To-Do List
@@ -71,9 +69,9 @@
       <router-view />
     </main>
 
-    <footer class="site-footer text-center mt-5 py-4 border-top">
+    <footer class="text-center mt-5 py-4 border-top">
       <div class="container">
-        <p class="footer-text mb-0 fw-medium">
+        <p class="mb-0 fw-medium">
           &copy; 2026 Insight Hire. All rights reserved.
         </p>
       </div>
@@ -104,7 +102,7 @@
    HEADER STYLES
    ================================================================== */
 
-.site-header {
+header {
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -120,7 +118,7 @@
    FOOTER STYLES  
    ================================================================== */
 
-.site-footer {
+footer {
   margin-top: auto;
   background-color: #f8f9fa;
 }
@@ -129,23 +127,23 @@
  * Footer text color override to meet AAA standards
  * Original text-muted is too light, this darker color has AAA contrast
  */
-.footer-text {
+footer p {
   color: var(--bs-secondary) !important;
   font-size: 0.875rem;
 }
 
-.tracking-tight {
+h1 {
   letter-spacing: -0.025em;
 }
 
-.transition-colors {
+.text-decoration-none {
   transition:
-    color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
+    color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
 }
 
-.nav-link-item:hover {
-  color: var(--bs-primary) !important;
+.text-decoration-none:hover {
+  color: #000000 !important;
 }
 
 .active-nav {

@@ -98,9 +98,3 @@ const dob = defineModel("dob");
 defineProps({ errors: { type: Object, required: true } });
 defineEmits(["validate"]);
 </script>
-
-<style scoped>
-.text-dark {
-  color: #000000 !important;
-}
-</style>

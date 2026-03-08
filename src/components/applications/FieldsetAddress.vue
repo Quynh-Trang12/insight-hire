@@ -80,7 +80,7 @@
 
         <div class="input-group input-group-lg has-validation">
           <span
-            class="input-group-text bg-white fw-bold fs-6 border-end-0 prefix-label"
+            class="input-group-text bg-white fw-bold fs-6 border-end-0"
             :class="errors.mobile ? 'border-danger text-danger' : 'text-dark'"
             id="mobile-prefix"
           >
@@ -148,13 +148,3 @@ const onMaska = (event) => {
   }
 };
 </script>
-
-<style scoped>
-.text-dark {
-  color: #000000 !important;
-}
-
-.prefix-label {
-  color: #000000 !important;
-}
-</style>

@@ -1,21 +1,21 @@
 <template>
   <li
-    class="task-item list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3 p-md-4 gap-3 transition-all"
+    class="task-item list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center p-3 p-md-4 gap-3"
     :class="task.isHighPriority ? 'high-priority-task' : 'normal-task'"
     role="listitem"
   >
     <div class="task-content">
-      <span 
-        class="task-text fw-medium fs-6" 
+      <span
+        class="task-text fw-medium fs-6"
         :class="{ 'fw-bold': task.isHighPriority }"
       >
         {{ task.text }}
-        <span 
+        <span
           class="priority-label"
           :class="task.isHighPriority ? 'text-danger' : 'text-dark'"
           :aria-label="`Priority: ${task.isHighPriority ? 'High' : 'Low'}`"
         >
-          ({{ task.isHighPriority ? 'High Priority' : 'Low Priority' }})
+          ({{ task.isHighPriority ? "High Priority" : "Low Priority" }})
         </span>
       </span>
     </div>
@@ -25,13 +25,15 @@
         @click="$emit('toggle', task.id)"
         class="btn btn-sm fw-bold priority-toggle-btn"
         :class="task.isHighPriority ? 'btn-outline-secondary' : 'btn-warning'"
-        :aria-label="task.isHighPriority ? 'Mark as low priority' : 'Mark as high priority'"
+        :aria-label="
+          task.isHighPriority ? 'Mark as low priority' : 'Mark as high priority'
+        "
       >
-        Mark as {{ task.isHighPriority ? 'Low' : 'High' }} Priority
+        Mark as {{ task.isHighPriority ? "Low" : "High" }} Priority
       </button>
 
-      <button 
-        @click="$emit('delete', task.id)" 
+      <button
+        @click="$emit('delete', task.id)"
         class="btn btn-sm btn-danger fw-bold delete-btn"
         aria-label="Delete this task"
       >
@@ -45,20 +47,20 @@
 /**
  * @file TodoItem.vue
  * @description Individual task item component
- * 
+ *
  * Props:
  * - task: Object containing { id, text, isHighPriority }
- * 
+ *
  * Emits:
  * - toggle: Emitted when priority toggle button is clicked
  * - delete: Emitted when delete button is clicked
- * 
+ *
  * Features:
  * - Visual distinction for high priority tasks
  * - Clear action buttons
  * - Smooth transitions
  * - ARIA labels for accessibility
- * 
+ *
  * Accessibility:
  * - AAA-compliant color contrasts
  * - Clear button labels
@@ -71,9 +73,9 @@ defineProps({
     type: Object,
     required: true,
   },
-})
+});
 
-defineEmits(['toggle', 'delete'])
+defineEmits(["toggle", "delete"]);
 </script>
 
 <style scoped>
@@ -82,14 +84,9 @@ defineEmits(['toggle', 'delete'])
    ================================================================== */
 
 .task-item {
-  background-color: #ffffff;
-  border: 1px solid #dee2e6;
+  background-color: #ffffff !important;
+  border: 1px solid #dee2e6 !important;
 }
-
-.transition-all {
-  transition: all 0.3s ease-in-out;
-}
-
 
 /* ==================================================================
    PRIORITY STATES
@@ -106,16 +103,15 @@ defineEmits(['toggle', 'delete'])
 }
 
 .normal-task {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
 }
-
 
 /* ==================================================================
    TEXT STYLING
    ================================================================== */
 
 .task-text {
-  color: #1E293B; /* Slate 800: 10.7:1 on white, ensures contrast during animations */
+  color: #1e293b; /* Slate 800: 10.7:1 on white, ensures contrast during animations */
   line-height: 1.6;
 }
 
@@ -134,9 +130,8 @@ defineEmits(['toggle', 'delete'])
 }
 
 .priority-label.text-danger {
-  color: #991B1B !important; /* Red 800: 8.9:1 on white, 7.9:1 on #fff3cd */
+  color: #991b1b !important; /* Red 800: 8.9:1 on white, 7.9:1 on #fff3cd */
 }
-
 
 /* ==================================================================
    BUTTON STYLING
@@ -150,8 +145,8 @@ defineEmits(['toggle', 'delete'])
  * - Contrast: 7.1:1
  */
 .btn-warning {
-  background-color: #78350F !important;
-  border-color: #78350F !important;
+  background-color: #78350f !important;
+  border-color: #78350f !important;
   color: #ffffff !important;
 }
 
@@ -186,18 +181,17 @@ defineEmits(['toggle', 'delete'])
  * - Contrast: 7.2:1
  */
 .btn-danger {
-  background-color: #991B1B !important;
-  border-color: #991B1B !important;
+  background-color: #991b1b !important;
+  border-color: #991b1b !important;
   color: #ffffff !important;
 }
 
 .btn-danger:hover,
 .btn-danger:focus {
-  background-color: #7F1D1D !important;
-  border-color: #7F1D1D !important;
+  background-color: #7f1d1d !important;
+  border-color: #7f1d1d !important;
   color: #ffffff !important;
 }
-
 
 /* ==================================================================
    RESPONSIVE DESIGN
@@ -208,19 +202,18 @@ defineEmits(['toggle', 'delete'])
     flex-direction: column;
     width: 100%;
   }
-  
+
   .task-actions button {
     width: 100%;
   }
 }
-
 
 /* ==================================================================
    HOVER EFFECTS
    ================================================================== */
 
 .task-item:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-1px) !important;
 }
 </style>

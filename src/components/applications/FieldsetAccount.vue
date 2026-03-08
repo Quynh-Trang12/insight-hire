@@ -129,10 +129,6 @@ defineEmits(["validate"]);
 </script>
 
 <style scoped>
-.text-dark {
-  color: #000000 !important;
-}
-
 .form-text {
   font-size: 0.875rem;
 }
