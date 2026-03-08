@@ -18,20 +18,7 @@
             class="badge bg-secondary px-3 py-2 d-inline-flex align-items-center gap-1"
             aria-label="Job location"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
+            <IconLocationPin />
             {{ job.location }}
           </span>
           <span
@@ -202,6 +189,7 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { jobsData as jobs } from "../../assets/data/jobs.js";
+import IconLocationPin from "@/assets/icons/IconLocationPin.vue";
 
 const route = useRoute();
 

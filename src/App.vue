@@ -8,21 +8,7 @@
         class="container d-flex flex-column flex-md-row justify-content-between align-items-center"
       >
         <h1 class="h3 mb-3 mb-md-0 fw-bold d-flex align-items-center">
-          <svg
-            class="text-primary me-2"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5Z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
+          <IconLayers :size="28" class="text-primary me-2" />
           <span class="text-primary fw-bolder">Insight</span
           ><span class="text-secondary fw-semibold">Hire</span>
         </h1>
@@ -111,6 +97,7 @@
  */
 import { ref, onMounted, onBeforeUnmount, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
+import IconLayers from "@/assets/icons/IconLayers.vue";
 
 const route = useRoute();
 const navRef = ref(null);
