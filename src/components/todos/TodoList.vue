@@ -77,7 +77,7 @@
  * - Clear visual feedback
  */
 
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import TodoInput from "./TodoInput.vue";
 import TodoItem from "./TodoItem.vue";
 
@@ -85,12 +85,38 @@ import TodoItem from "./TodoItem.vue";
    STATE MANAGEMENT
    ================================================================== */
 
-const tasks = ref([]);
+const STORAGE_KEY = "insighthire_todos";
+const UNDO_TIMEOUT_MS = 5000; // 5 seconds to undo deletion
+
+/**
+ * Loads persisted tasks from localStorage
+ * Returns an empty array if no data exists or data is corrupted
+ */
+const loadTasks = () => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+};
+
+const tasks = ref(loadTasks());
 const deletedTasks = ref([]);
 const showUndoToast = ref(false);
 const undoTimeoutId = ref(null);
 
-const UNDO_TIMEOUT_MS = 5000; // 5 seconds to undo deletion
+/**
+ * Persists tasks to localStorage whenever the array changes
+ * Deep watch catches property changes (e.g. priority toggle)
+ */
+watch(
+  tasks,
+  (newTasks) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTasks));
+  },
+  { deep: true },
+);
 
 /* ==================================================================
    TASK MANAGEMENT FUNCTIONS
