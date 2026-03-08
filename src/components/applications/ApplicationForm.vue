@@ -1,7 +1,7 @@
 <template>
   <form
     method="post"
-    action="http://mercury.swin.edu.au/it000000/formtest.php"
+    action="https://mercury.swin.edu.au/it000000/formtest.php"
     @submit="validateAndSubmit"
     class="application-form bg-white p-4 p-md-5 rounded shadow-sm border"
     novalidate
