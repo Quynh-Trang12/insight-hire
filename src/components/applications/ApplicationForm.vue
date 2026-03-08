@@ -345,13 +345,13 @@ const handleValidate = (field) => {
  * @param {Event} event - Submit event
  */
 const validateAndSubmit = (event) => {
-  // Always prevent default — we control submission via modal flow
-  event.preventDefault();
-
   // Run full validation
   validateAll(form);
 
   if (hasErrors.value) {
+    // Prevent native submission — show errors instead
+    event.preventDefault();
+
     // Build human-readable error list for the modal
     const errorList = Object.entries(errors).map(
       ([field, msg]) => `${FIELD_LABELS[field] || field}: ${msg}`,
@@ -363,13 +363,9 @@ const validateAndSubmit = (event) => {
       errorList,
     );
     window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    showModal(
-      "Application Submitted",
-      "Your application has been validated successfully and is ready for submission.",
-      "success",
-    );
   }
+  // If no errors, allow the native form submission to proceed
+  // (the browser will POST to the form's action URL)
 };
 </script>
 
